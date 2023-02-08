@@ -60,24 +60,24 @@ $url = Yii::$app->urlManager;
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="text-center mb-5"><?=Yii::t('app','Create an account')?></h1>
+                            <h1 class="text-center mb-5"><?=Yii::t('app','ساخت حساب کاربری')?></h1>
                             <?php
                             if (Yii::$app->session->getFlash('message')) {
                                 echo Yii::$app->session->getFlash('message');
                             }
                             ?>
                             <div class="my-4">
-                                <?= $form->field($model, 'username')->textInput(['placeholder' => Yii::t('app','Enter the username')])->label(false) ?>
-                                <?= $form->field($model, 'email')->textInput(['placeholder' => Yii::t('app','Enter the email')])->label(false) ?>
-                                <?= $form->field($model, 'mobile')->textInput(['placeholder' => Yii::t('app','Enter the mobile')])->label(false) ?>
-                                <?= $form->field($model, 'password')->passwordInput(['placeholder' => Yii::t('app','Enter the password')])->label(false) ?>
-                                <?= $form->field($model, 'password_repeat')->passwordInput(['placeholder' => Yii::t('app','Enter the password confirm')])->label(false) ?>
+                                <?= $form->field($model, 'username')->textInput(['placeholder' => Yii::t('app','نام کاربری')])->label(false) ?>
+                                <?= $form->field($model, 'email')->textInput(['placeholder' => Yii::t('app','ایمیل')])->label(false) ?>
+                                <?= $form->field($model, 'mobile')->textInput(['placeholder' => Yii::t('app','موبایل (11رقم)')])->label(false) ?>
+                                <?= $form->field($model, 'password')->passwordInput(['placeholder' => Yii::t('app','گذرواژه')])->label(false) ?>
+                                <?= $form->field($model, 'password_repeat')->passwordInput(['placeholder' => Yii::t('app','تکرار گذرواژه')])->label(false) ?>
                             </div>
 
                             <div class="text-center my-2">
-                                <?= Html::submitButton(Yii::t('app', 'signup'), ['class' => 'btn btn-primary btn-block']) ?>
+                                <?= Html::submitButton(Yii::t('app', 'ثبت '), ['class' => 'btn btn-primary btn-block']) ?>
                             </div>
-                            <div class="text-center mt-4"><?= Html::a(Yii::t('app', 'Entering the system'), ['login'], ['class' => 'text-primary']) ?></div>
+                            <div class="text-center mt-4"><?= Html::a(Yii::t('app', 'ورود'), ['login'], ['class' => 'text-primary']) ?></div>
 
                         </div>
                     </div>

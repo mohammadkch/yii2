@@ -5,12 +5,15 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "users".
  *
  * @property int $id
- * @property string $name
+ * @property string $username
+ * @property string $mobile
  * @property string $email
  * @property string $password_hash
  * @property string|null $created_at
@@ -20,12 +23,25 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'user';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('CURRENT_TIMESTAMP'),
+            ]
+        ];
     }
 
     /**
@@ -55,6 +71,8 @@ class User extends ActiveRecord implements IdentityInterface
             'mobile' => 'mobile',
             'password_hash' => 'Password hash',
             'auth_key' => 'auth key',
+            'created_at' => 'create time',
+            'updated_at' => 'update time'
         ];
     }
 
