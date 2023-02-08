@@ -9,6 +9,10 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Profile;
+use app\models\RegisterForm;
+use yii\debug\models\search\Db;
+use app\models\User;
 
 class SiteController extends Controller
 {
@@ -61,7 +65,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $this->layout = 'main';
+
+//        $user = User::find()->leftJoin('profile', ['`user`.id' => 'profile.user_id'])->select(['user.*', 'profile.*'])->asArray()->one();
+        $profile = Profile::find()->one();
+        
+        return $this->render('index', ['profileModel' => $profile]);
     }
 
     /**
@@ -71,6 +80,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = 'auth';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -125,4 +135,50 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionRegister()
+    {
+        $this->layout = 'auth';
+
+        $model = new RegisterForm();
+
+        if ($model->load(Yii::$app->request->post()) ){
+
+            if($model->validate() && $model->register() === true) {
+                Yii::$app->session->addFlash('SIGNUP', 'You have successfully registered');
+                return $this->redirect(['site/login']);
+            } else {
+                // var_dump($model->errors);
+                // exit();
+                Yii::$app->session->addFlash('SIGNUP', 'You have ridi' . var_dump($model->register()));
+                return $this->redirect(['site/register']);
+            }
+
+        }
+
+        return $this->render('register', [
+            'model' => $model
+        ]);
+
+        // $user = new User();
+        // if ($user->load(Yii::$app->request->post())) {
+        //     $request = Yii::$app->request->post();
+
+        //     $user->attributes = $request;
+        //     $user->password = Yii::$app->getSecurity()->generatePasswordHash($user->password);//Hash password before storing to DB
+        //     $session = Yii::$app->session;
+
+        //     if($user->validate() && $user->save())
+        //     {
+        //         $session->setFlash('successMessage', 'Registration successful');
+        //         return $this->redirect(['site/login']);
+        //     }
+
+        //     $session->setFlash('errorMessages', $user->getErrors());
+        //     return $this->redirect(['site/register']);
+        // }
+
+        // $this->render('register');
+    }
+
 }

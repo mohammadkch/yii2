@@ -1,53 +1,50 @@
 <?php
 
-/** @var yii\web\View $this */
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
 
-$this->title = 'My Yii Application';
+/* @var $model \common\models\LoginForm */
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+
+$this->title = 'صفحه اصلی';
+$url = Yii::$app->urlManager;
 ?>
-<div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
+    <div class="container">
+        <div class="content-center">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="text-center mb-5">نیما</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+                            <div class="text-center my-2">
+                                <a href="<?=Yii::$app->urlManager->createAbsoluteUrl('site/sell-nima')?>" class="btn btn-primary btn-block">فروشنده ارز</a>
+                            </div>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+                            <div class="text-center my-2">
+                                <a href="<?=Yii::$app->urlManager->createAbsoluteUrl('site/buy-nima')?>" class="btn btn-outline-secondary btn-block">خریدار ارز</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="text-center mb-5">سنا</h1>
 
-    <div class="body-content">
+                            <div class="text-center my-2">
+                                <a href="<?=Yii::$app->urlManager->createAbsoluteUrl('site/sell-sana')?>" class="btn btn-primary btn-block">فروشنده ارز</a>
+                            </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                            <div class="text-center my-2">
+                                <a href="<?=Yii::$app->urlManager->createAbsoluteUrl('site/buy-sana')?>" class="btn btn-outline-secondary btn-block">خریدار ارز</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
